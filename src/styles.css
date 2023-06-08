@@ -1,0 +1,41 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+.breed-select {
+  width: 50%;
+}
+img {
+  width: 40%;
+}
+.cat-card {
+  display: flex;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+h1 {
+  display: block;
+  margin-bottom: 40px;
+  text-decoration: underline;
+  text-align: center;
+  font-size: 35px;
+  line-height: 0;
+}
+p {
+  display: block;
+  margin-top: 0;
+  margin-left: 30px;
+  margin-bottom: 30px;
+
+  line-height: 1.5;
+}
+
+.temperament {
+  font-weight: 500;
+}
