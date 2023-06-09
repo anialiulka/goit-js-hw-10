@@ -3,8 +3,23 @@ import { fetchBreeds, fetchCatByBreed } from './cat-api';
 
 const options = document.querySelector('.breed-select');
 const catInfoCard = document.querySelector('.cat-info');
+const loader = document.querySelector('.loader');
 
-fetchBreeds().then(renderCatOptions);
+export const displayLoading = () => {
+  loader.classList.remove('hidden');
+  catInfoCard.classList.add('hidden');
+};
+
+const hideLoading = () => {
+  loader.classList.add('hidden');
+  options.classList.remove('hidden');
+  catInfoCard.classList.remove('hidden');
+};
+
+fetchBreeds().then(data => {
+  hideLoading();
+  renderCatOptions(data);
+});
 
 function renderCatOptions(cats) {
   const markup = cats
@@ -23,7 +38,10 @@ function onClick(e) {
   catInfoCard.innerHTML = ' ';
   const breedId = options.value;
   console.log(breedId);
-  fetchCatByBreed(breedId).then(showTheSelectedBreed);
+  fetchCatByBreed(breedId).then(data => {
+    hideLoading();
+    showTheSelectedBreed(data);
+  });
 }
 
 function showTheSelectedBreed(selectedBreed) {
