@@ -4,6 +4,7 @@ import { fetchBreeds, fetchCatByBreed } from './cat-api';
 const options = document.querySelector('.breed-select');
 const catInfoCard = document.querySelector('.cat-info');
 const loader = document.querySelector('.loader');
+export const error = document.querySelector('.error');
 
 export const displayLoading = () => {
   loader.classList.remove('hidden');
@@ -37,7 +38,6 @@ function onClick(e) {
   e.preventDefault();
   catInfoCard.innerHTML = ' ';
   const breedId = options.value;
-  console.log(breedId);
   fetchCatByBreed(breedId).then(data => {
     hideLoading();
     showTheSelectedBreed(data);
@@ -45,7 +45,6 @@ function onClick(e) {
 }
 
 function showTheSelectedBreed(selectedBreed) {
-  console.log(selectedBreed);
   const markup = selectedBreed.map(({ breeds, url }) =>
     breeds
       .map(
